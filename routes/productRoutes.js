@@ -15,8 +15,9 @@ const storage = multer.diskStorage({
     },
 });
 const uploadFile = multer({ storage: storage });
-
+console.log('uploadFile -> ', uploadFile)
 router.post("/upload", uploadFile.array('file', 4), (req, res) => {
+    console.log('req -> ', req);
     if (!req.files || req.files.length === 0) {
         return res.status(203).send('file upload failed');
     }
